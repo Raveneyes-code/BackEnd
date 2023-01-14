@@ -3,7 +3,7 @@ let app = express();
 let bodyParser = require('body-parser');
 let assignment = require('./routes/assignments');
 let register = require('./routes/register');
- 
+path = require("path");
 cors= require('cors');
 app.use(cors());
 let mongoose = require('mongoose');
@@ -12,7 +12,10 @@ mongoose.Promise = global.Promise;
 
 // remplacer toute cette chaine par l'URI de connexion à votre propre base dans le cloud s
 const uri = 'mongodb+srv://AimanBenomar:123Menara@cluster0.yyopm6t.mongodb.net/assignments?retryWrites=true&w=majority';
-
+app.use(express.static(path.join(__dirname, 'dist/assignment-app')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/assignment-app/index.html'));
+});
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
