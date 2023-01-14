@@ -2,16 +2,10 @@ let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
 let assignment = require('./routes/assignments');
-path = require("path");
+ 
 cors= require('cors');
 app.use(cors());
 let mongoose = require('mongoose');
-
-
-app.use(express.static(path.join(__dirname, 'dist/assignment-app')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/assignment-app/index.html'));
-});
 mongoose.Promise = global.Promise;
 //mongoose.set('debug', true);
 
