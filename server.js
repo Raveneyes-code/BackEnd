@@ -2,6 +2,7 @@ let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
 let assignment = require('./routes/assignments');
+let register = require('./routes/register');
  
 cors= require('cors');
 app.use(cors());
